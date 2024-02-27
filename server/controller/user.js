@@ -145,10 +145,11 @@ const verifyAlternateContactOTP = async (req, res) => {
         if (isAccount.alternateContact.otp === alternateContactOTP) {
             isAccount.alternateContact.isVerified = true
             await isAccount.save()
-            return res.send({ success: true, message: "alternate contact Verified", isAccount, token })
+            return res.send({ success: true, message: "alternate contact Verified", isAccount })
         }
 
     } catch (err) {
+        console.log('4')
         return res.send({ success: false, message: err.message })
     }
 }
