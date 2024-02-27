@@ -153,10 +153,27 @@ const verifyAlternateContactOTP = async (req, res) => {
     }
 }
 
+//get login profile data
+const getProfileData = async (req, res) => {
+    try {
+        const isAccount = await User.findById(req.accountId)
+        if (isAccount) {
+            return res.send({ success: true, profile: isAccount })
+        }
+        else {
+            return res.send({ success: false, message: 'sorry, cannot find user' })
+        }
+
+    } catch (err) {
+        return res.send({ success: false, message: err.message })
+    }
+}
+
 module.exports = {
     sendOtp,
     verifyPrimaryContactOTP,
     profileSetup,
     sendAlternateContactOtp,
-    verifyAlternateContactOTP
+    verifyAlternateContactOTP,
+    getProfileData
 }

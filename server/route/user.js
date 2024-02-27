@@ -6,7 +6,8 @@ const {
     verifyPrimaryContactOTP,
     profileSetup,
     sendAlternateContactOtp,
-    verifyAlternateContactOTP
+    verifyAlternateContactOTP,
+    getProfileData
 } = require('../controller/user')
 // middleware
 const middleware = require("../middleware/account")
@@ -16,5 +17,6 @@ router.post("/verify-primary-contact", verifyPrimaryContactOTP)
 router.post('/setup-profile', middleware, profileSetup)
 router.post('/send-alternate-contact-otp', middleware, sendAlternateContactOtp)
 router.post("/verify-alternate-contact-otp", middleware, verifyAlternateContactOTP)
+router.get("/profile", middleware, getProfileData)
 
 module.exports = router
