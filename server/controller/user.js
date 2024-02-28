@@ -149,7 +149,6 @@ const verifyAlternateContactOTP = async (req, res) => {
         }
 
     } catch (err) {
-        console.log('4')
         return res.send({ success: false, message: err.message })
     }
 }
